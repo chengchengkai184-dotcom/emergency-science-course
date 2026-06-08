@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>中小学应急科普课程资料｜可视化表达稿</title>
+  <style>
+    :root {
+      --ink: #162238;
+      --muted: #667085;
+      --blue: #1e5b96;
+      --blue-2: #eaf4ff;
+      --orange: #e67821;
+      --orange-2: #fff3e6;
+      --green: #23785a;
+      --green-2: #eaf7f1;
+      --red: #b4423e;
+      --red-2: #fff0ef;
+      --paper: #ffffff;
+      --wash: #f6f8fb;
+      --line: #dbe4ef;
+      --shadow: 0 18px 50px rgba(20, 34, 56, .10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 16% 8%, rgba(30, 91, 150, .14), transparent 26rem),
+        radial-gradient(circle at 86% 4%, rgba(230, 120, 33, .13), transparent 22rem),
+        linear-gradient(180deg, #fbfdff 0%, #f5f8fb 38%, #ffffff 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 22px 72px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 0 -22px 28px;
+      padding: 12px 22px;
+      backdrop-filter: blur(18px);
+      background: rgba(250, 252, 255, .78);
+      border-bottom: 1px solid rgba(219, 228, 239, .72);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 8px 22px rgba(30, 91, 150, .25);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 7px 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+      border-color: var(--line);
+      background: #fff;
+    }
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(330px, .86fr);
+      gap: 34px;
+      align-items: center;
+      padding: 34px 0 54px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--blue-2);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      max-width: 720px;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 660px;
+      margin: 0;
+      color: #495466;
+      font-size: 19px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 8px 20px rgba(30, 91, 150, .08);
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(219, 228, 239, .9);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .hero-visual {
+      min-height: 410px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(255,255,255,.22), transparent 9rem),
+        radial-gradient(circle at 86% 12%, rgba(255,255,255,.16), transparent 8rem),
+        linear-gradient(135deg, #1e5b96, #23785a);
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: .45;
+    }
+
+    .hero-visual > * { position: relative; }
+
+    .hero-visual strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .hero-visual span {
+      color: rgba(255,255,255,.84);
+      font-size: 15px;
+    }
+
+    .hero-points {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .hero-point {
+      min-height: 92px;
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-point b {
+      display: block;
+      margin: 0 0 4px;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .hero-point small {
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.9);
+    }
+
+    .metric b {
+      display: block;
+      font-size: 26px;
+      color: var(--blue);
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      scroll-margin-top: 86px;
+      margin-top: 68px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 540px;
+      color: var(--muted);
+    }
+
+    .question-grid,
+    .topic-grid,
+    .case-grid,
+    .product-grid,
+    .source-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .question-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .question-card,
+    .topic-card,
+    .case-card,
+    .product-card,
+    .source-card,
+    .notice {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(20, 34, 56, .06);
+    }
+
+    .question-card {
+      padding: 20px;
+      min-height: 184px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-card::after {
+      content: attr(data-num);
+      position: absolute;
+      right: 14px;
+      bottom: -16px;
+      font-size: 78px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(30, 91, 150, .08);
+    }
+
+    .question-card b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .question-card p,
+    .topic-card p,
+    .case-card p,
+    .product-card p,
+    .source-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .background-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .background-item {
+      padding: 22px;
+      border-radius: var(--radius);
+      min-height: 210px;
+    }
+
+    .background-item:nth-child(1) { background: var(--blue-2); }
+    .background-item:nth-child(2) { background: var(--orange-2); }
+    .background-item:nth-child(3) { background: var(--green-2); }
+    .background-item:nth-child(4) { background: #f1edff; }
+
+    .background-item b {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 19px;
+    }
+
+    .background-item p {
+      margin: 0;
+      color: #4a5668;
+      font-size: 14px;
+    }
+
+    .topic-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .topic-card {
+      padding: 20px;
+      min-height: 220px;
+    }
+
+    .topic-card .tag,
+    .case-card .tag,
+    .product-card .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--blue);
+      background: var(--blue-2);
+    }
+
+    .topic-card h3,
+    .case-card h3,
+    .product-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .stage-lanes {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .lane {
+      position: relative;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(20,34,56,.06);
+    }
+
+    .lane::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .lane:nth-child(2)::before { background: var(--green); }
+    .lane:nth-child(3)::before { background: var(--orange); }
+    .lane:nth-child(4)::before { background: var(--red); }
+
+    .lane h3 { margin: 0 0 12px; font-size: 20px; }
+    .lane ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .lane li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .lane li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .case-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-card {
+      padding: 22px;
+      min-height: 260px;
+    }
+
+    .case-card .example {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--wash);
+      color: #38465a;
+      font-size: 14px;
+    }
+
+    .course-stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .course-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 12px 34px rgba(20,34,56,.07);
+    }
+
+
+    .flow-visual {
+      width: 100%;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .flow-visual h4 {
+      margin: 0 0 14px;
+      color: var(--flow, var(--blue));
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .flow-step {
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--wash);
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      width: 8px;
+      height: 2px;
+      background: #9aa7b5;
+    }
+
+    .flow-step b {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--flow, var(--blue));
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .flow-step span {
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .course-card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--wash);
+      color: #435063;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .transform {
+      margin-top: 16px;
+      padding: 14px;
+      border-left: 4px solid var(--orange);
+      background: var(--orange-2);
+      border-radius: 12px;
+      color: #614125;
+      font-size: 14px;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-card {
+      padding: 20px;
+      min-height: 200px;
+    }
+
+    .source-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .source-card {
+      padding: 18px;
+    }
+
+    .notice {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-top: 28px;
+      padding: 20px;
+      background: #fff7e6;
+      border-color: #f5d29f;
+    }
+
+    .notice b {
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
+    .footer {
+      margin-top: 70px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .course-card {
+        grid-template-columns: 1fr;
+      }
+
+      .question-grid,
+      .background-grid,
+      .stage-lanes,
+      .topic-grid,
+      .product-grid,
+      .source-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 18px 14px 54px; }
+      .nav { margin: 0 -14px 20px; padding: 10px 14px; }
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .nav-links { justify-content: flex-start; }
+      .question-grid,
+      .background-grid,
+      .stage-lanes,
+      .topic-grid,
+      .case-grid,
+      .product-grid,
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-head { display: block; }
+      .section-head p { margin-top: 8px; }
+      .hero { min-height: auto; padding-top: 18px; }
+      .hero-visual { min-height: 310px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand"><span class="mark">应</span> 中小学应急科普课程资料</div>
+      <div class="nav-links">
+        <a href="#questions">四个问题</a>
+        <a href="#topics">课程主题</a>
+        <a href="#stages">学段设计</a>
+        <a href="#cases">湖北案例</a>
+        <a href="#courses">课程样例</a>
+        <a href="#media">媒体转化</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <div>
+        <span class="kicker">公开发布版</span>
+        <h1>把应急科普，变成学生真正用得上的课程</h1>
+        <p class="lead">基于最终版 Word 内容重组为一页式专题表达：从政策背景、课程主题、学段路径，到湖北本地案例和新媒体产品转化，形成可直接用于展示、沟通和后续公开发布的页面结构。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#courses">查看课程样例</a>
+          <a class="button" href="#media">查看传播产品</a>
+        </div>
+        <div class="metrics" aria-label="内容规模">
+          <div class="metric"><b>4</b><span>核心问题</span></div>
+          <div class="metric"><b>9</b><span>课程主题</span></div>
+          <div class="metric"><b>4</b><span>分学段路径</span></div>
+          <div class="metric"><b>6</b><span>媒体产品方向</span></div>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="hero-visual">
+          <div class="hero-points">
+            <div class="hero-point"><b>课程内容</b><small>从日常风险场景进入课堂</small></div>
+            <div class="hero-point"><b>学段表达</b><small>低龄游戏化，高龄项目化</small></div>
+            <div class="hero-point"><b>湖北样本</b><small>本地案例形成报道线索</small></div>
+            <div class="hero-point"><b>媒体转化</b><small>图文、短视频、H5、公开课</small></div>
+          </div>
+          <strong>从“安全提醒”到“课程产品”</strong>
+          <span>课堂讲解、情景模拟、实践演练、家校协同和社会资源共同参与。</span>
+        </div>
+      </aside>
+    </header>
+
+    <section id="questions">
+      <div class="section-head">
+        <h2>整体预览：四个问题串起资料方向</h2>
+        <p>原稿中的“四个问题”适合作为页面的导航骨架，也能帮助读者快速判断这份资料能做什么。</p>
+      </div>
+      <div class="question-grid">
+        <article class="question-card" data-num="01">
+          <b>中小学生最需要掌握哪些应急知识？</b>
+          <p>围绕溺水、火灾、地震、交通、踩踏、极端天气、食品卫生、网络安全等日常场景组织。</p>
+        </article>
+        <article class="question-card" data-num="02">
+          <b>不同学段应该用什么方式讲？</b>
+          <p>低龄更重识别和求助，高龄更重案例分析、风险识别、技能体验和传播实践。</p>
+        </article>
+        <article class="question-card" data-num="03">
+          <b>湖北有没有可报道、可复制的案例？</b>
+          <p>AI音乐思政课、防灾减灾日活动、校园“五个一”行动、示范学校和教育基地都可转化。</p>
+        </article>
+        <article class="question-card" data-num="04">
+          <b>媒体端能做成什么传播产品？</b>
+          <p>可拆成图文海报、短视频、系列栏目、互动H5、校园公开课和采访报道。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="background">
+      <div class="section-head">
+        <h2>政策与现实背景</h2>
+        <p>把长段说明拆成四个判断，读者可以在几十秒内理解“为什么要做、怎么做、湖北有什么基础”。</p>
+      </div>
+      <div class="background-grid">
+        <div class="background-item"><b>政策依据</b><p>中小学公共安全教育强调分模块、分阶段推进，涵盖社会安全、公共卫生、意外伤害、网络与信息安全、自然灾害等。</p></div>
+        <div class="background-item"><b>教育方式</b><p>不只停留在说教层面，更适合课堂讲解、情景模拟、实践演练、家校协同和社会资源参与相结合。</p></div>
+        <div class="background-item"><b>现实需求</b><p>中小学生面临溺水、火灾、交通事故、地震避险、校园拥挤踩踏、极端天气、食品卫生、网络诈骗等风险。</p></div>
+        <div class="background-item"><b>湖北优势</b><p>湖北已有“应急科普+AI音乐思政课”、防灾减灾宣传进校园、应急安全教育实践基地等探索。</p></div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="section-head">
+        <h2>课程主题矩阵</h2>
+        <p>把九个主题做成卡片，方便后续拆分成系列栏目、公开课或校园活动包。</p>
+      </div>
+      <div class="topic-grid">
+        <article class="topic-card"><span class="tag">暑期前重点</span><h3>防溺水应急</h3><p>不私自下水；发现落水者如何呼救；“叫、叫、伸、抛”等科学救援原则；避免手拉手救援、盲目下水。</p></article>
+        <article class="topic-card"><span class="tag">消防宣传月</span><h3>消防安全</h3><p>认识火灾风险；家庭和校园用电安全；火场逃生；灭火器认识；拨打119报警。</p></article>
+        <article class="topic-card"><span class="tag">防灾减灾周</span><h3>地震避险与疏散</h3><p>震时就近避险；伏地、遮挡、手抓牢；震后有序疏散；熟悉校园避险路线。</p></article>
+        <article class="topic-card"><span class="tag">上下学场景</span><h3>交通安全</h3><p>上下学路上交通风险；电动车、骑行、过马路、乘车安全；远离车辆盲区。</p></article>
+        <article class="topic-card"><span class="tag">校园秩序</span><h3>拥挤踩踏与公共场所安全</h3><p>楼道、操场、集会、上下楼梯等场景中的秩序意识；摔倒后自护姿势；不推搡、不逆行。</p></article>
+        <article class="topic-card"><span class="tag">专业演示</span><h3>急救基础认知</h3><p>拨打120；判断意识和呼吸；CPR与AED基础认知；海姆立克急救法；止血包扎常识。</p></article>
+        <article class="topic-card"><span class="tag">天气风险</span><h3>极端天气应对</h3><p>暴雨、雷电、高温、寒潮等天气下的避险；上下学途中如何保护自己。</p></article>
+        <article class="topic-card"><span class="tag">校园卫生</span><h3>公共卫生与食品安全</h3><p>传染病预防；个人卫生；食品购买与饮食安全；校园常见卫生风险。</p></article>
+        <article class="topic-card"><span class="tag">数字生活</span><h3>网络与信息安全</h3><p>网络诈骗、游戏充值风险、个人信息保护、陌生链接和账号安全。</p></article>
+      </div>
+    </section>
+
+    <section id="stages">
+      <div class="section-head">
+        <h2>不同学段的课程路径</h2>
+        <p>表达逻辑从“认识风险”逐步升级到“参与传播”，形成连续的学习阶梯。</p>
+      </div>
+      <div class="stage-lanes">
+        <article class="lane">
+          <h3>小学低年级</h3>
+          <ul>
+            <li>目标：认识风险、学会求助</li>
+            <li>形式：动画、儿歌、图片卡片、角色扮演</li>
+            <li>效果：会拨打110/119/120，遇险先找大人</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>小学高年级</h3>
+          <ul>
+            <li>目标：简单判断、正确行动</li>
+            <li>形式：情景剧、互动课堂、应急包展示</li>
+            <li>效果：掌握防溺水口诀、火灾逃生方向、地震避险动作</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>初中</h3>
+          <ul>
+            <li>目标：案例分析、风险识别、技能体验</li>
+            <li>形式：案例复盘、校园风险地图、小组讨论、模拟演练</li>
+            <li>效果：能解释错误做法为什么危险</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>高中</h3>
+          <ul>
+            <li>目标：公共责任、志愿服务、传播实践</li>
+            <li>形式：专题研讨、安全宣传策划、短视频创作</li>
+            <li>效果：参与校园安全治理与科普传播</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="section-head">
+        <h2>湖北本地可参考案例</h2>
+        <p>这一部分更适合做报道线索库：每个案例都可以继续补链接、采访对象和画面素材。</p>
+      </div>
+      <div class="case-grid">
+        <article class="case-card">
+          <span class="tag">创新课堂</span>
+          <h3>湖北“应急科普+AI音乐思政课”</h3>
+          <p>将防溺水、校园安全等内容与AI音乐、地方文化和思政教育融合，弱化说教感，增强参与度。</p>
+          <div class="example">具体例子：华师一附中光谷汤逊湖学校北校区通过AI改编《划船调》和龙舟沉浸体验学习防溺水“叫、叫、伸、抛”口诀；武汉市南湖中学通过校园风险地图、音乐剧等方式讲校园安全。</div>
+        </article>
+        <article class="case-card">
+          <span class="tag">城市活动</span>
+          <h3>武汉“5·12全国防灾减灾日”活动</h3>
+          <p>实景演练、装备展示、消防救援模拟、红十字急救普及，可转化为研学或校外实践课程。</p>
+          <div class="example">具体例子：武汉市围绕“5·12全国防灾减灾日”开展应急演练、科普宣讲、答题竞赛、“应急纸飞机”等活动，形成线上线下联动样本。</div>
+        </article>
+        <article class="case-card">
+          <span class="tag">校园机制</span>
+          <h3>宜昌校园“五个一”行动</h3>
+          <p>专题课、应急演练、隐患排查、科普宣传等联动推进，说明课程可从讲座升级为机制。</p>
+          <div class="example">具体例子：一堂专题课、一场应急演练、一次科普讲座、一批宣传素材、一轮安全隐患排查。</div>
+        </article>
+        <article class="case-card">
+          <span class="tag">基地资源</span>
+          <h3>防震减灾示范学校与教育基地</h3>
+          <p>防震减灾科普馆、应急安全教育实践基地等资源，适合做“校内课程+校外体验”。</p>
+          <div class="example">具体例子：应急安全教育培训中心、湖北应急安全教育实践基地等，可作为资源入口。</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="section-head">
+        <h2>优先整理的四个课程样例</h2>
+        <p>每个课程样例都按“目标、关键动作、传播转化”呈现，可继续扩写成脚本或分镜。</p>
+      </div>
+      <div class="course-stack">
+        <article class="course-card">
+          <div>
+            <h3>样例一：防溺水应急科普课</h3>
+            <p>适用对象：小学高年级至初中。目标是让学生知道哪些水域危险，理解“不能盲目下水救人”的原因，掌握发现同伴落水后的正确求助流程。</p>
+            <div class="chips"><span class="chip">认识危险水域</span><span class="chip">科学救援</span><span class="chip">拒绝盲目下水</span></div>
+            <div class="transform">传播转化：短视频《防溺水不是一句“别下水”》，用情景剧呈现错误示范与正确示范。</div>
+          </div>
+          <div class="flow-visual" style="--flow: var(--green);"><h4>防溺水应急科普课：从“不下水”到“会求助”</h4><div class="flow-steps"><div class="flow-step"><b>1</b><span>认识危险水域</span></div><div class="flow-step"><b>2</b><span>大声呼救，找成年人</span></div><div class="flow-step"><b>3</b><span>借助工具救援</span></div><div class="flow-step"><b>4</b><span>拒绝盲目下水</span></div></div></div>
+        </article>
+        <article class="course-card">
+          <div>
+            <h3>样例二：地震避险与校园疏散课</h3>
+            <p>适用对象：小学至高中。目标是让学生熟悉地震发生时的就近避险动作和震后疏散流程。</p>
+            <div class="chips"><span class="chip">就近避险</span><span class="chip">伏地遮挡手抓牢</span><span class="chip">有序疏散</span></div>
+            <div class="transform">传播转化：互动H5《地震来临时，你会选哪一步？》，以选择题形式强化正确动作。</div>
+          </div>
+          <div class="flow-visual" style="--flow: var(--blue);"><h4>地震避险与校园疏散课：动作要短、路线要熟</h4><div class="flow-steps"><div class="flow-step"><b>1</b><span>就近避险</span></div><div class="flow-step"><b>2</b><span>伏地、遮挡、手抓牢</span></div><div class="flow-step"><b>3</b><span>听从指挥疏散</span></div><div class="flow-step"><b>4</b><span>集合清点复盘</span></div></div></div>
+        </article>
+        <article class="course-card">
+          <div>
+            <h3>样例三：校园消防与火场逃生课</h3>
+            <p>适用对象：小学高年级至高中。目标是让学生认识校园和家庭常见火灾隐患，掌握报警、逃生、初期灭火的基本原则。</p>
+            <div class="chips"><span class="chip">隐患识别</span><span class="chip">报警表达</span><span class="chip">低姿逃生</span></div>
+            <div class="transform">传播转化：一分钟竖屏视频《火灾逃生时最容易做错的三件事》。</div>
+          </div>
+          <div class="flow-visual" style="--flow: var(--orange);"><h4>校园消防与火场逃生课：先报警、再避险、会逃生</h4><div class="flow-steps"><div class="flow-step"><b>1</b><span>识别隐患</span></div><div class="flow-step"><b>2</b><span>说清火情地点</span></div><div class="flow-step"><b>3</b><span>低姿有序逃生</span></div><div class="flow-step"><b>4</b><span>专业演示灭火器</span></div></div></div>
+        </article>
+        <article class="course-card">
+          <div>
+            <h3>样例四：急救基础认知课</h3>
+            <p>适用对象：初中、高中。目标是让学生建立“先保护自己、再科学施救”的意识，掌握拨打120、寻找AED、胸外按压等基础认知。</p>
+            <div class="chips"><span class="chip">拨打120</span><span class="chip">CPR认知</span><span class="chip">AED认知</span></div>
+            <div class="transform">传播转化：与红十字会或医院急救培训团队合作，推出《中学生急救第一课》。</div>
+          </div>
+          <div class="flow-visual" style="--flow: var(--red);"><h4>急救基础认知课：先保护自己，再科学施救</h4><div class="flow-steps"><div class="flow-step"><b>1</b><span>判断现场安全</span></div><div class="flow-step"><b>2</b><span>拨打120</span></div><div class="flow-step"><b>3</b><span>寻找AED</span></div><div class="flow-step"><b>4</b><span>专业指导实操</span></div></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="media">
+      <div class="section-head">
+        <h2>可转化的新媒体传播产品</h2>
+        <p>把课程内容进一步拆成不同媒介形态，便于编辑部或项目组分工推进。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><span class="tag">图文海报</span><h3>《中小学生必须知道的10个应急常识》</h3><p>适合微信、微博、校园公众号发布，重点突出口诀和场景。</p></article>
+        <article class="product-card"><span class="tag">短视频</span><h3>《防溺水不是一句“别下水”》</h3><p>用情景剧或学生对话呈现错误做法与正确做法。</p></article>
+        <article class="product-card"><span class="tag">系列栏目</span><h3>《湖北校园应急科普课》</h3><p>每期一个主题：防溺水、消防、地震、交通、急救、网络安全等。</p></article>
+        <article class="product-card"><span class="tag">互动H5</span><h3>《突发情况来了，你能做对几步？》</h3><p>适合做选择题闯关，提升学生参与感。</p></article>
+        <article class="product-card"><span class="tag">校园公开课</span><h3>《人人讲安全 个个会应急》</h3><p>邀请应急、消防、红十字、教育部门联合参与。</p></article>
+        <article class="product-card"><span class="tag">采访报道</span><h3>《应急科普如何走进湖北中小学》</h3><p>采访学校、学生、家长、专家和应急部门，形成观察报道。</p></article>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <h2>后续资料与来源方向</h2>
+        <p>公开发布前，建议把“点击查看原文/案例”补成真实链接，并确认引用口径。</p>
+      </div>
+      <div class="source-grid">
+        <article class="source-card"><b>政策依据</b><p>国务院办公厅转发教育部《中小学公共安全教育指导纲要》相关内容，用于确定公共安全教育模块与课程原则。</p></article>
+        <article class="source-card"><b>湖北创新案例</b><p>湖北省应急管理厅、人民网关于湖北“应急科普+AI音乐思政课”的报道，用于本地创新案例梳理。</p></article>
+        <article class="source-card"><b>城市活动案例</b><p>武汉市应急管理局关于“5·12全国防灾减灾日”宣传教育活动资料，用于武汉本地活动案例与主题依据。</p></article>
+        <article class="source-card"><b>校园专项行动</b><p>宜昌市应急管理局关于防灾减灾宣传进校园活动资料，用于校园专项行动案例。</p></article>
+        <article class="source-card"><b>演练指南</b><p>中国地震局、教育部门关于中小学校地震应急避险疏散演练相关指南，用于地震避险课程和演练设计。</p></article>
+        <article class="source-card"><b>急救资料</b><p>红十字会、急救机构公开科普资料，用于CPR、AED、海姆立克等急救基础内容，具体教学需专业人员参与。</p></article>
+      </div>
+      <div class="notice">
+        <b>专业边界提醒</b>
+        <span>涉及心肺复苏、AED、海姆立克急救法、灭火器实操等技能，应由具备资质的专业人员进行教学与演示。</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>中小学应急科普课程资料｜可视化表达稿</span>
+      <span>GitHub 公开发布版</span>
+    </footer>
+  </main>
+</body>
+</html>
